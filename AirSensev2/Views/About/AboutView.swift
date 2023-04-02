@@ -7,44 +7,24 @@
 
 import SwiftUI
 
+//let bg = Color("18171C")
 struct AboutView: View {
+    
+    var shadowColor = Color("background")
     var body: some View {
+    
         
         ZStack{
-            Color.white
+//            Color.white
+        Image("Frame 88")
+                .resizable()
                 .ignoresSafeArea()
         
         VStack {
             
-//
-//
-//            MapView()
-//                .edgesIgnoringSafeArea(.top)
-//                .frame(height: 300)
-//
-//                .overlay {
-//                    // MARK: Bottom Sheet Separator
-//                    Divider()
-//                        .blendMode(.overlay)
-//                        .background(Color.bottomSheetBorderTop)
-//                        .frame(maxHeight: .infinity, alignment: .top)
-//                        .clipShape(RoundedRectangle(cornerRadius: 44))
-//
-//                }
-//                .overlay {
-//                    // MARK: Drag Indicator
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .fill(.black.opacity(0.3))
-//                        .frame(width: 48, height: 5)
-//                        .frame(height: 20)
-//                        .frame(maxHeight: .infinity, alignment: .top)
-//                        .ignoresSafeArea()
-//                        .padding(.vertical, 10)
-//                }
-//
             AvatarView()
-                .offset(x: 0, y: 1)
-                .padding(.bottom, -50)
+                .offset(x: 0, y: -50)
+                .padding(.bottom, -140)
 
             VStack(alignment: .center) {
                 Text("Change Your Avatar")
@@ -59,19 +39,61 @@ struct AboutView: View {
                     Text("Dubai, UAE")
                         .font(.subheadline)
                 }.padding(.top, 10)
+                    .padding(.bottom, 50)
+                
             }
             .padding()
+            .colorInvert()
 
             Spacer()
             
+            VStack (){
+                
+                Text("Information")
+                    .font(.title3)
+                    .colorInvert()
+                  
+             .offset(x: -119, y: -360)
             
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color.black)
+                        .opacity(0.2)
+                        .frame(width: 336, height: 138)
+                        .padding(.top, -350)
+         
+                    
+                    VStack {
+                                Text("Email")
+                            .offset(x: -115)
+                        
+                                Divider()
+                            .frame(width: 280)
+                        
+                                Text("Phone Number")
+                            .offset(x: -80)
+                        Divider()
+                            .frame(width: 280)
+                        
+                        Text("Probe ID")
+                            .offset(x: -103)
+                       
+                        
+                        
+                    } .colorInvert()
+                        .padding(.top, -335)
+                        
+                    
+                }
+            }
         }
     }
-}
+    }
         }
 
 struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
         AboutView()
+//            .preferredColorScheme(.dark)
     }
 }

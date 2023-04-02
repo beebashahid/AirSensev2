@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct card1: View {
 
@@ -65,29 +66,36 @@ struct CourseView: View {
    var color = Color("background3")
    var shadowColor = Color("backgroundShadow3")
 
-   var body: some View {
-      return VStack(alignment: .leading) {
-         Text(title)
-            .font(.title3)
-            .fontWeight(.bold)
-            .foregroundColor(.white)
-            .padding(30)
-            .lineLimit(4)
-
-         Spacer()
-
-         Image(image)
-            .resizable()
-            .renderingMode(.original)
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 246, height: 150)
-            .padding(.bottom, 30)
-      }
-      .background(color)
-      .cornerRadius(30)
-      .frame(width: 246, height: 246)
-      .shadow(color: shadowColor, radius: 20, x: 0, y: 20)
-   }
+    var body: some View {
+        return ZStack{
+            Map()
+            //    .preferredColorScheme(.dark)
+            
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(30)
+                    .lineLimit(4)
+                
+                Spacer()
+                
+                Image(image)
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 246, height: 150)
+                    .padding(.bottom, 30)
+            }
+          
+            
+            
+        }
+        //.background(color)
+            .cornerRadius(30)
+            .frame(width: 246, height: 246)
+            .shadow(color: shadowColor, radius: 20, x: 0, y: 20)    }
 }
 
 struct Course: Identifiable {
@@ -120,3 +128,23 @@ let coursesData = [
 //          color: Color("background9"),
 //          shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
 ]
+
+struct Map: UIViewRepresentable {
+    
+    
+    func makeUIView(context: Context) -> MKMapView {
+        MKMapView(frame: .zero)
+           // .edgesIgnoringSafeArea(.top)
+    }
+
+    func updateUIView(_ view: MKMapView, context: Context) {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: 25.2048, longitude: 55.2708)
+        let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        view.setRegion(region, animated: true)
+       // mapView.mapType = .satellite
+        
+    }
+}
+   

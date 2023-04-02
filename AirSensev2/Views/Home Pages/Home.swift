@@ -20,6 +20,7 @@ struct Home: View {
 
    var body: some View {
       ZStack(alignment: .top) {
+          
          // NavigationStack{
               //NavigationLink(destination: ContentView, label: "")
               HomeList()
